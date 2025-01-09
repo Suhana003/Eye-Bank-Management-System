@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Bank Management System</title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+            /* Smooth scrolling for page */
+        }
+
+        nav {
+            background-color: white;
+            color: #ADD8E6;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .menu {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .menu .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav a {
+            color: #468da2;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background-color: #c7e3f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('eh.jpg');
+            /* Add your image path */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;  
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark overlay for better text visibility */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero .cta-button {
+            background-color: #468da2;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .hero .cta-button:hover {
+            background-color: #005f73;
+        }
+
+
+
+        .content {
+            padding: 20px;
+        }
+
+        .content h2 {
+            color: #468da2;
+        }
+
+        #our-mission {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Light background to enhance readability */
+            padding: 40px 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for a subtle 3D effect */
+            text-align: center;
+        }
+
+        #our-mission h2 {
+            color: #2e7489;
+            /* Matching the theme color */
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        #our-mission p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            /* Center the text block */
+        }
+
+
+        #eye-donation-facts {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #eye-donation-facts h2 {
+            color: #2e7489;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .facts-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            /* Ensures smooth scrolling to each card */
+            gap: 20px;
+            padding: 20px 0;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for a subtle 3D effect */
+        }
+
+        .fact-card {
+            flex: 0 0 300px;
+            /* Card size */
+            background-color: #2e7489;
+            /* Light blue background */
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: center;
+            /* Each card snaps to center */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .fact-card:hover {
+            transform: scale(1.05);
+            /* Slight zoom on hover */
+        }
+
+        .facts-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .facts-container::-webkit-scrollbar-thumb {
+            background-color: #468da2;
+            /* Customize scrollbar color */
+            border-radius: 10px;
+        }
+
+        .fact-card p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+
+
+        #faq-section {
+            background-color: rgba(240, 248, 255, 0.9);
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #faq-section h2 {
+            color: #468da2;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background-color: #bee5f3;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            background-color: #468da2;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #35788a;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            background-color: #bee5f3;
+            display: none;
+            font-size: 16px;
+            color: #333;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding: 10px 0;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="menu">
+            <div class="logo">
+                <img src="logo1.png" alt="Eye Bank Logo"> <!-- Add your logo image path here -->
+            </div>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="register.php">Donor Register</a>
+                <a href="search.php">Search Donors</a>
+                <a href="request.php">Request an Eye</a>
+                <a href="view_requests.php">View Requests</a>
+                <a href="events.php">View Events</a>
+                <a href="stockavail.php">View Stocks</a>
+
+
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to the Eye Bank Management System</h1>
+            <p>Give the gift of sight. Register to become a donor or request an eye donation today.</p>
+            <a href="register.php" class="cta-button">Register as a Donor</a>
+        </div>
+    </section>
+
+    <section id="our-mission" class="content">
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to restore vision and improve lives by facilitating eye donations for corneal transplants.
+            We aim to create awareness about the importance of eye donation and connect donors with those in need,
+            offering a second chance at sight for individuals affected by corneal blindness.
+        </p>
+    </section>
+
+    <section id="eye-donation-facts">
+        <h2>Eye Donation Facts</h2>
+        <div class="facts-container">
+            <div class="fact-card">
+                <p>Almost anyone can donate their eyes, regardless of age or medical condition.</p>
+            </div>
+            <div class="fact-card">
+                <p>Eyes must be removed within 6 hours of death to be suitable for transplantation.</p>
+            </div>
+            <div class="fact-card">
+                <p>One eye donor can restore sight to two people through corneal transplants.</p>
+            </div>
+            <div class="fact-card">
+                <p>The entire process of eye removal takes about 20-30 minutes and does not affect funeral arrangements.
+                </p>
+            </div>
+            <div class="fact-card">
+                <p>All major religions support eye donation as an act of charity and goodwill.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">What is eye donation?</button>
+                <div class="faq-answer">
+                    <p>Eye donation is the act of donating one’s eyes after death to help restore vision in others
+                        through corneal transplantation.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Who can donate eyes?</button>
+                <div class="faq-answer">
+                    <p>Almost anyone can be an eye donor, regardless of age, medical history, or other factors. Even
+                        individuals with poor eyesight or certain medical conditions may donate.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is there any cost to donate eyes?</button>
+                <div class="faq-answer">
+                    <p>No, there is no cost to the donor or their family for eye donation.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How are donated eyes used?</button>
+                <div class="faq-answer">
+                    <p>Donated eyes are used primarily for corneal transplants. Other parts of the eye may be used for
+                        medical research or education.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How soon after death should eyes be donated?</button>
+                <div class="faq-answer">
+                    <p>Eyes should be donated within 6 hours of death to ensure their suitability for transplantation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <p>&copy; 2024 Eye Bank Management System. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
